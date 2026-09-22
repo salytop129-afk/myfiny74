@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Finy SCHOOL74</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --danger: #ef4444;
+      --success: #16a34a;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1250px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo-title {
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .logo-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    nav button {
+      border: 0;
+      background: transparent;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: #eff6ff;
+      color: var(--primary);
+    }
+
+    /* MAIN */
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 30px 20px 60px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(124, 58, 237, 0.35), transparent 35%),
+        linear-gradient(135deg, #1d4ed8, #2563eb 55%, #4f46e5);
+      color: white;
+      padding: 42px;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 17px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-secondary {
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .btn-success {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: var(--card);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CARDS */
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 350px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      outline: none;
+    }
+
+    .search:focus,
+    input:focus,
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    /* CITIES */
+
+    .cities {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .city {
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      transition: 0.2s;
+      text-align: left;
+    }
+
+    .city:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(37, 99, 235, 0.1);
+    }
+
+    .city.active {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .city-name {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .city-count {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* SCHOOLS */
+
+    .schools {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 15px;
+    }
+
+    .school-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      background: white;
+      transition: 0.2s;
+    }
+
+    .school-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    }
+
+    .school-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: 22px;
+      margin-bottom: 13px;
+    }
+
+    .school-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .school-city {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .school-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      border: 0;
+      padding: 9px 11px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* SCHEDULE */
+
+    .schedule-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      padding: 13px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .lesson-number {
+      width: 50px;
+      font-weight: bold;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .close {
+      width: 35px;
+      height: 35px;
+      border: 0;
+      border-radius: 9px;
+      background: #f1f5f9;
+      font-size: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      background: white;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    /* EMPTY */
+
+    .empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #111827;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 500;
+      max-width: 350px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav {
+        overflow-x: auto;
+      }
+
+      nav button {
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 550px) {
+      main {
+        padding: 15px 12px 40px;
+      }
+
+      .hero {
+        padding: 27px 20px;
+        border-radius: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 16px;
+      }
+
+      .stat-number {
+        font-size: 25px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .search {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <div class="logo">
+      <div class="logo-icon">74</div>
+
+      <div>
+        <div class="logo-title">My Finy SCHOOL74</div>
+        <div class="logo-subtitle">Школы Челябинской области</div>
+      </div>
+    </div>
+
+    <nav>
+      <button class="active" onclick="scrollToSection('home')">Главная</button>
+      <button onclick="scrollToSection('cities-section')">Города</button>
+      <button onclick="scrollToSection('schools-section')">Школы</button>
+      <button onclick="scrollToSection('schedule-section')">Расписание</button>
+    </nav>
+
+  </div>
+</header>
+
+
+<main id="home">
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>My Finy SCHOOL74</h1>
+
+    <p>
+      Единая школьная платформа Челябинской области.
+      Выбирайте город, находите школу, смотрите расписание
+      и добавляйте новые школы.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-white" onclick="scrollToSection('schools-section')">
+        🏫 Найти школу
+      </button>
+
+      <button class="btn btn-white" onclick="openSchoolModal()">
+        ➕ Загрузить школу
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-number" id="statSchools">0</div>
+      <div class="stat-label">Школ</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number" id="statCities">0</div>
+      <div class="stat-label">Городов</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number" id="statLessons">0</div>
+      <div class="stat-label">Уроков в расписании</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">74</div>
+      <div class="stat-label">Регион</div>
+    </div>
+
+  </section>
+
+
+  <!-- CITIES -->
+
+  <section class="section" id="cities-section">
+
+    <div class="section-header">
+
+      <div>
+        <h2>📍 Города Челябинской области</h2>
+        <p style="color:#6b7280; margin-top:5px;">
+          Выберите город, чтобы увидеть школы
+        </p>
+      </div>
+
+      <input
+        class="search"
+        id="citySearch"
+        placeholder="Поиск города..."
+        oninput="renderCities()"
+      />
+
+    </div>
+
+    <div class="cities" id="cities"></div>
+
+  </section>
+
+
+  <!-- SCHOOLS -->
+
+  <section class="section" id="schools-section">
+
+    <div class="section-header">
+
+      <div>
+        <h2>🏫 Школы</h2>
+        <p id="selectedCityText" style="color:#6b7280; margin-top:5px;">
+          Все школы
+        </p>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+        <input
+          class="search"
+          id="schoolSearch"
+          placeholder="Поиск школы..."
+          oninput="renderSchools()"
+        />
+
+        <button
+          class="btn btn-primary"
+          onclick="openSchoolModal()"
+        >
+          + Добавить школу
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="schools" id="schools"></div>
+
+  </section>
+
+
+  <!-- SCHEDULE -->
+
+  <section class="section" id="schedule-section">
+
+    <div class="section-header">
+
+      <div>
+        <h2>📚 Расписание</h2>
+        <p id="scheduleSchoolName" style="color:#6b7280; margin-top:5px;">
+          Выберите школу
+        </p>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        onclick="openScheduleModal()"
+      >
+        + Добавить урок
+      </button>
+
+    </div>
+
+    <div class="schedule-wrapper" id="schedule"></div>
+
+  </section>
+
+</main>
+
+
+<!-- SCHOOL MODAL -->
+
+<div class="modal" id="schoolModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2>🏫 Добавить школу</h2>
+
+      <button class="close" onclick="closeModal('schoolModal')">
+        ×
+      </button>
+    </div>
+
+    <form id="schoolForm">
+
+      <div class="form-group">
+        <label>Название школы</label>
+
+        <input
+          id="schoolName"
+          type="text"
+          placeholder="Например: МБОУ СОШ №74"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Город</label>
+
+        <select id="schoolCity" required></select>
+      </div>
+
+      <div class="form-group">
+        <label>Адрес</label>
+
+        <input
+          id="schoolAddress"
+          type="text"
+          placeholder="Улица, дом"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Описание</label>
+
+        <input
+          id="schoolDescription"
+          type="text"
+          placeholder="Например: общеобразовательная школа"
+        />
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          onclick="closeModal('schoolModal')"
+        >
+          Отмена
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Добавить школу
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- SCHEDULE MODAL -->
+
+<div class="modal" id="scheduleModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <h2>📚 Добавить урок</h2>
+
+      <button class="close" onclick="closeModal('scheduleModal')">
+        ×
+      </button>
+
+    </div>
+
+    <form id="scheduleForm">
+
+      <div class="form-group">
+        <label>Школа</label>
+
+        <select id="scheduleSchool" required></select>
+      </div>
+
+      <div class="form-group">
+        <label>День недели</label>
+
+        <select id="scheduleDay" required>
+          <option value="Понедельник">Понедельник</option>
+          <option value="Вторник">Вторник</option>
+          <option value="Среда">Среда</option>
+          <option value="Четверг">Четверг</option>
+          <option value="Пятница">Пятница</option>
+          <option value="Суббота">Суббота</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Номер урока</label>
+
+        <select id="lessonNumber" required>
+          <option value="1">1 урок</option>
+          <option value="2">2 урок</option>
+          <option value="3">3 урок</option>
+          <option value="4">4 урок</option>
+          <option value="5">5 урок</option>
+          <option value="6">6 урок</option>
+          <option value="7">7 урок</option>
+          <option value="8">8 урок</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Предмет</label>
+
+        <input
+          id="lessonSubject"
+          type="text"
+          placeholder="Например: Математика"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Время</label>
+
+        <input
+          id="lessonTime"
+          type="text"
+          placeholder="08:30 – 09:15"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Кабинет</label>
+
+        <input
+          id="lessonRoom"
+          type="text"
+          placeholder="Например: 204"
+        />
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          onclick="closeModal('scheduleModal')"
+        >
+          Отмена
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Добавить урок
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+  /*
+   * =====================================================
+   * MY FINY SCHOOL74
+   * Основная логика сайта
+   * =====================================================
+   */
+
+
+  // Города Челябинской области
+  const cities = [
+    "Аша",
+    "Бакал",
+    "Верхнеуральск",
+    "Верхний Уфалей",
+    "Еманжелинск",
+    "Златоуст",
+    "Карабаш",
+    "Карталы",
+    "Касли",
+    "Катав-Ивановск",
+    "Копейск",
+    "Коркино",
+    "Куса",
+    "Кыштым",
+    "Магнитогорск",
+    "Миасс",
+    "Миньяр",
+    "Нязепетровск",
+    "Озёрск",
+    "Пласт",
+    "Сатка",
+    "Сим",
+    "Снежинск",
+    "Трёхгорный",
+    "Троицк",
+    "Усть-Катав",
+    "Чебаркуль",
+    "Челябинск",
+    "Южноуральск"
+  ];
+
+
+  // Данные по умолчанию
+  const defaultSchools = [
+    {
+      id: 1,
+      name: "МБОУ «СОШ № 74»",
+      city: "Миасс",
+      address: "г. Миасс",
+      description: "Общеобразовательная школа"
+    },
+
+    {
+      id: 2,
+      name: "МБОУ СОШ № 1",
+      city: "Челябинск",
+      address: "г. Челябинск",
+      description: "Общеобразовательная школа"
+    },
+
+    {
+      id: 3,
+      name: "МБОУ СОШ № 10",
+      city: "Златоуст",
+      address: "г. Златоуст",
+      description: "Общеобразовательная школа"
+    },
+
+    {
+      id: 4,
+      name: "МБОУ СОШ № 21",
+      city: "Магнитогорск",
+      address: "г. Магнитогорск",
+      description: "Общеобразовательная школа"
+    }
+  ];
+
+
+  // Расписание по умолчанию
+  const defaultSchedule = [
+    {
+      id: 1,
+      schoolId: 1,
+      day: "Понедельник",
+      number: 1,
+      subject: "Математика",
+      time: "08:30 – 09:15",
+      room: "204"
+    },
+
+    {
+      id: 2,
+      schoolId: 1,
+      day: "Понедельник",
+      number: 2,
+      subject: "Русский язык",
+      time: "09:25 – 10:10",
+      room: "105"
+    },
+
+    {
+      id: 3,
+      schoolId: 1,
+      day: "Понедельник",
+      number: 3,
+      subject: "История",
+      time: "10:20 – 11:05",
+      room: "302"
+    },
+
+    {
+      id: 4,
+      schoolId: 1,
+      day: "Вторник",
+      number: 1,
+      subject: "Физика",
+      time: "08:30 – 09:15",
+      room: "201"
+    }
+  ];
+
+
+  // Загружаем данные из браузера
+  let schools =
+    JSON.parse(localStorage.getItem("school74_schools")) ||
+    defaultSchools;
+
+  let schedule =
+    JSON.parse(localStorage.getItem("school74_schedule")) ||
+    defaultSchedule;
+
+
+  let selectedCity = null;
+  let selectedSchoolId = 1;
+
+
+  /*
+   * СОХРАНЕНИЕ
+   */
+
+  function saveData() {
+    localStorage.setItem(
+      "school74_schools",
+      JSON.stringify(schools)
+    );
+
+    localStorage.setItem(
+      "school74_schedule",
+      JSON.stringify(schedule)
+    );
+  }
+
+
+  /*
+   * TOAST
+   */
+
+  function showToast(message) {
+
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
+
+  /*
+   * НАВИГАЦИЯ
+   */
+
+  function scrollToSection(id) {
+
+    document
+      .getElementById(id)
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+  }
+
+
+  /*
+   * ГОРОДА
+   */
+
+  function renderCities() {
+
+    const container =
+      document.getElementById("cities");
+
+    const search =
+      document
+        .getElementById("citySearch")
+        .value
+        .toLowerCase();
+
+    const filtered = cities.filter(city =>
+      city.toLowerCase().includes(search)
+    );
+
+    container.innerHTML = "";
+
+    filtered.forEach(city => {
+
+      const count =
+        schools.filter(
+          school => school.city === city
+        ).length;
+
+      const button =
+        document.createElement("button");
+
+      button.className =
+        "city" +
+        (selectedCity === city ? " active" : "");
+
+      button.innerHTML = `
+        <div class="city-name">📍 ${city}</div>
+        <div class="city-count">
+          ${count} ${getSchoolWord(count)}
+        </div>
+      `;
+
+      button.onclick = () => {
+
+        selectedCity = city;
+
+        document
+          .getElementById("selectedCityText")
+          .textContent =
+          "Город: " + city;
+
+        renderCities();
+        renderSchools();
+
+        scrollToSection("schools-section");
+      };
+
+      container.appendChild(button);
+    });
+  }
+
+
+  function getSchoolWord(number) {
+
+    if (number === 1) return "школа";
+
+    if (
+      number >= 2 &&
+      number <= 4
+    ) return "школы";
+
+    return "школ";
+  }
+
+
+  /*
+   * ШКОЛЫ
+   */
+
+  function renderSchools() {
+
+    const container =
+      document.getElementById("schools");
+
+    const search =
+      document
+        .getElementById("schoolSearch")
+        .value
+        .toLowerCase();
+
+    let result = schools;
+
+    if (selectedCity) {
+      result = result.filter(
+        school =>
+          school.city === selectedCity
+      );
+    }
+
+    result = result.filter(school =>
+      (
+        school.name +
+        " " +
+        school.city
+      )
+        .toLowerCase()
+        .includes(search)
+    );
+
+    container.innerHTML = "";
+
+    if (result.length === 0) {
+
+      container.innerHTML = `
+        <div class="empty" style="grid-column:1/-1;">
+          <div class="empty-icon">🏫</div>
+          <div>Школы не найдены</div>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    result.forEach(school => {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "school-card";
+
+      card.innerHTML = `
+
+        <div class="school-icon">
+          🏫
+        </div>
+
+        <h3>
+          ${escapeHTML(school.name)}
+        </h3>
+
+        <div class="school-city">
+          📍 ${escapeHTML(school.city)}
+        </div>
+
+        <p style="
+          color:#6b7280;
+          font-size:13px;
+          margin-bottom:15px;
+        ">
+          ${escapeHTML(
+            school.description || ""
+          )}
+        </p>
+
+        <div class="school-actions">
+
+          <button
+            class="small-btn btn-primary"
+            onclick="selectSchool(${school.id})"
+          >
+            Расписание
+          </button>
+
+          <button
+            class="small-btn btn-danger"
+            onclick="deleteSchool(${school.id})"
+          >
+            Удалить
+          </button>
+
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+
+  /*
+   * ВЫБОР ШКОЛЫ
+   */
+
+  function selectSchool(id) {
+
+    selectedSchoolId = id;
+
+    const school =
+      schools.find(
+        school => school.id === id
+      );
+
+    if (!school) return;
+
+    document
+      .getElementById("scheduleSchoolName")
+      .textContent =
+      school.name +
+      " — " +
+      school.city;
+
+    renderSchedule();
+
+    scrollToSection("schedule-section");
+  }
+
+
+  /*
+   * РАСПИСАНИЕ
+   */
+
+  function renderSchedule() {
+
+    const container =
+      document.getElementById("schedule");
+
+    const school =
+      schools.find(
+        school =>
+          school.id === selectedSchoolId
+      );
+
+    if (!school) {
+
+      container.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">📚</div>
+          Выберите школу
+        </div>
+      `;
+
+      return;
+    }
+
+
+    const lessons =
+      schedule.filter(
+        lesson =>
+          lesson.schoolId ===
+          selectedSchoolId
+      );
+
+
+    if (lessons.length === 0) {
+
+      container.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">📚</div>
+
+          <div>
+            Для этой школы пока нет расписания.
+          </div>
+
+          <br>
+
+          <button
+            class="btn btn-primary"
+            onclick="openScheduleModal()"
+          >
+            Добавить первый урок
+          </button>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    const days = [
+      "Понедельник",
+      "Вторник",
+      "Среда",
+      "Четверг",
+      "Пятница",
+      "Суббота"
+    ];
+
+
+    let html = "";
+
+
+    days.forEach(day => {
+
+      const dayLessons =
+        lessons
+          .filter(
+            lesson =>
+              lesson.day === day
+          )
+          .sort(
+            (a, b) =>
+              a.number - b.number
+          );
+
+
+      if (dayLessons.length === 0)
+        return;
+
+
+      html += `
+        <h3 style="margin:25px 0 10px;">
+          ${day}
+        </h3>
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>№</th>
+              <th>Время</th>
+              <th>Предмет</th>
+              <th>Кабинет</th>
+              <th></th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+      `;
+
+
+      dayLessons.forEach(lesson => {
+
+        html += `
+
+          <tr>
+
+            <td class="lesson-number">
+              ${lesson.number}
+            </td>
+
+            <td>
+              ${escapeHTML(lesson.time)}
+            </td>
+
+            <td>
+              <strong>
+                ${escapeHTML(
+                  lesson.subject
+                )}
+              </strong>
+            </td>
+
+            <td>
+              ${escapeHTML(
+                lesson.room || "—"
+              )}
+            </td>
+
+            <td>
+              <button
+                class="small-btn btn-danger"
+                onclick="deleteLesson(${lesson.id})"
+              >
+                Удалить
+              </button>
+            </td>
+
+          </tr>
+
+        `;
+      });
+
+
+      html += `
+          </tbody>
+        </table>
+      `;
+    });
+
+
+    container.innerHTML = html;
+  }
+
+
+  /*
+   * ДОБАВЛЕНИЕ ШКОЛЫ
+   */
+
+  function openSchoolModal() {
+
+    const select =
+      document.getElementById("schoolCity");
+
+    select.innerHTML = "";
+
+    cities.forEach(city => {
+
+      const option =
+        document.createElement("option");
+
+      option.value = city;
+      option.textContent = city;
+
+      if (selectedCity === city) {
+        option.selected = true;
+      }
+
+      select.appendChild(option);
+    });
+
+
+    document
+      .getElementById("schoolModal")
+      .classList.add("show");
+  }
+
+
+  document
+    .getElementById("schoolForm")
+    .addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+
+        const school = {
+
+          id: Date.now(),
+
+          name:
+            document
+              .getElementById("schoolName")
+              .value
+              .trim(),
+
+          city:
+            document
+              .getElementById("schoolCity")
+              .value,
+
+          address:
+            document
+              .getElementById("schoolAddress")
+              .value
+              .trim(),
+
+          description:
+            document
+              .getElementById("schoolDescription")
+              .value
+              .trim()
+
+        };
+
+
+        schools.push(school);
+
+        saveData();
+
+        closeModal("schoolModal");
+
+        this.reset();
+
+        renderAll();
+
+        showToast(
+          "Школа успешно добавлена!"
+        );
+      }
+    );
+
+
+  /*
+   * УДАЛЕНИЕ ШКОЛЫ
+   */
+
+  function deleteSchool(id) {
+
+    const school =
+      schools.find(
+        school =>
+          school.id === id
+      );
+
+    if (!school) return;
+
+
+    const confirmed =
+      confirm(
+        `Удалить школу «${school.name}»?`
+      );
+
+
+    if (!confirmed) return;
+
+
+    schools =
+      schools.filter(
+        school =>
+          school.id !== id
+      );
+
+
+    schedule =
+      schedule.filter(
+        lesson =>
+          lesson.schoolId !== id
+      );
+
+
+    if (selectedSchoolId === id) {
+
+      selectedSchoolId =
+        schools.length
+          ? schools[0].id
+          : null;
+
+    }
+
+
+    saveData();
+
+    renderAll();
+
+    renderSchedule();
+
+    showToast(
+      "Школа удалена"
+    );
+  }
+
+
+  /*
+   * ДОБАВЛЕНИЕ РАСПИСАНИЯ
+   */
+
+  function openScheduleModal() {
+
+    if (schools.length === 0) {
+
+      showToast(
+        "Сначала добавьте школу"
+      );
+
+      return;
+    }
+
+
+    const select =
+      document.getElementById(
+        "scheduleSchool"
+      );
+
+    select.innerHTML = "";
+
+
+    schools.forEach(school => {
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        school.id;
+
+      option.textContent =
+        `${school.name} — ${school.city}`;
+
+
+      if (
+        school.id ===
+        selectedSchoolId
+      ) {
+        option.selected = true;
+      }
+
+
+      select.appendChild(option);
+    });
+
+
+    document
+      .getElementById("scheduleModal")
+      .classList.add("show");
+  }
+
+
+  document
+    .getElementById("scheduleForm")
+    .addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+
+        const lesson = {
+
+          id: Date.now(),
+
+          schoolId:
+            Number(
+              document
+                .getElementById(
+                  "scheduleSchool"
+                )
+                .value
+            ),
+
+          day:
+            document
+              .getElementById(
+                "scheduleDay"
+              )
+              .value,
+
+          number:
+            Number(
+              document
+                .getElementById(
+                  "lessonNumber"
+                )
+                .value
+            ),
+
+          subject:
+            document
+              .getElementById(
+                "lessonSubject"
+              )
+              .value
+              .trim(),
+
+          time:
+            document
+              .getElementById(
+                "lessonTime"
+              )
+              .value
+              .trim(),
+
+          room:
+            document
+              .getElementById(
+                "lessonRoom"
+              )
+              .value
+              .trim()
+
+        };
+
+
+        schedule.push(lesson);
+
+        selectedSchoolId =
+          lesson.schoolId;
+
+
+        saveData();
+
+        closeModal(
+          "scheduleModal"
+        );
+
+        this.reset();
+
+        renderSchedule();
+
+        updateStats();
+
+        showToast(
+          "Урок добавлен в расписание!"
+        );
+      }
+    );
+
+
+  /*
+   * УДАЛЕНИЕ УРОКА
+   */
+
+  function deleteLesson(id) {
+
+    const confirmed =
+      confirm(
+        "Удалить этот урок?"
+      );
+
+
+    if (!confirmed) return;
+
+
+    schedule =
+      schedule.filter(
+        lesson =>
+          lesson.id !== id
+      );
+
+
+    saveData();
+
+    renderSchedule();
+
+    updateStats();
+
+    showToast(
+      "Урок удалён"
+    );
+  }
+
+
+  /*
+   * MODALS
+   */
+
+  function closeModal(id) {
+
+    document
+      .getElementById(id)
+      .classList.remove("show");
+  }
+
+
+  document
+    .querySelectorAll(".modal")
+    .forEach(modal => {
+
+      modal.addEventListener(
+        "click",
+        function(event) {
+
+          if (
+            event.target === modal
+          ) {
+            modal.classList.remove(
+              "show"
+            );
+          }
+
+        }
+      );
+
+    });
+
+
+  /*
+   * СТАТИСТИКА
+   */
+
+  function updateStats() {
+
+    document
+      .getElementById(
+        "statSchools"
+      )
+      .textContent =
+      schools.length;
+
+
+    const usedCities =
+      new Set(
+        schools.map(
+          school =>
+            school.city
+        )
+      );
+
+
+    document
+      .getElementById(
+        "statCities"
+      )
+      .textContent =
+      usedCities.size;
+
+
+    document
+      .getElementById(
+        "statLessons"
+      )
+      .textContent =
+      schedule.length;
+  }
+
+
+  /*
+   * ЗАЩИТА HTML
+   */
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+
+  /*
+   * ОБНОВЛЕНИЕ ВСЕГО САЙТА
+   */
+
+  function renderAll() {
+
+    renderCities();
+
+    renderSchools();
+
+    renderSchedule();
+
+    updateStats();
+  }
+
+
+  /*
+   * ЗАПУСК
+   */
+
+  renderAll();
+
+</script>
+
+</body>
+</html>
